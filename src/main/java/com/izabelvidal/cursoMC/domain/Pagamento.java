@@ -1,36 +1,53 @@
 package com.izabelvidal.cursoMC.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+
 import com.izabelvidal.cursoMC.domain.enums.EstadoPagamento;
 
-public class Pagamento {
-	private Integer idInteger;
-	private EstadoPagamento estado;
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class Pagamento implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
+	@Id
+	private Integer id;
+	private Integer estado;
+	@OneToOne
+	@JoinColumn(name="PEDIDO_ID")
+	@MapsId
 	private Pedido pedido;
 	
 	public Pagamento() {}
 
-	public Pagamento(Integer idInteger, EstadoPagamento estado, Pedido pedido) {
+	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
-		this.setIdInteger(idInteger);
-		this.setEstado(estado);
+		this.setId(id);
+		this.estado = estado.getCod();
 		this.setPedido(pedido);
 	}
 
-	public Integer getIdInteger() {
-		return idInteger;
+	public Integer getI() {
+		return id;
 	}
 
-	public void setIdInteger(Integer idInteger) {
-		this.idInteger = idInteger;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public EstadoPagamento getEstado() {
-		return estado;
+		return EstadoPagamento.toEnum(estado);
 	}
 
 	public void setEstado(EstadoPagamento estado) {
-		this.estado = estado;
+		this.estado = estado.getCod();
 	}
 
 	public Pedido getPedido() {

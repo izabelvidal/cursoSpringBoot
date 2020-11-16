@@ -1,8 +1,14 @@
 package com.izabelvidal.cursoMC.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 import com.izabelvidal.cursoMC.domain.enums.EstadoPagamento;
 
-public class PagamentoComCartao extends Pagamento{
+@Entity
+public class PagamentoComCartao extends Pagamento implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Integer numeroDeParcelas;
 	
 	public PagamentoComCartao() {}

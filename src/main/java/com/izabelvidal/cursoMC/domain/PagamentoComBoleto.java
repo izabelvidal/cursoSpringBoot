@@ -1,10 +1,15 @@
 package com.izabelvidal.cursoMC.domain;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 import com.izabelvidal.cursoMC.domain.enums.EstadoPagamento;
 
-public class PagamentoComBoleto extends Pagamento{
+@Entity
+public class PagamentoComBoleto extends Pagamento implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Date dataVencimento;
 	private Date dataPagamento;
 	
