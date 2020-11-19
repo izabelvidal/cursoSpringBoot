@@ -20,6 +20,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import com.izabelvidal.cursoMC.security.JWTAuthenticationFilter;
+import com.izabelvidal.cursoMC.security.JWTAuthorizationFilter;
 import com.izabelvidal.cursoMC.security.JWTUtil;
 
 @Configuration
